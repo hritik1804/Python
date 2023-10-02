@@ -15,10 +15,9 @@ Following is the truth table of an AND Gate:
 Refer - https://www.geeksforgeeks.org/logic-gates-in-python/
 """
 
-
 def and_gate(input_1: int, input_2: int) -> int:
     """
-    Calculate AND of the input values
+    Calculate AND of the input values. Input values should be either 0 or 1.
 
     >>> and_gate(0, 0)
     0
@@ -28,8 +27,13 @@ def and_gate(input_1: int, input_2: int) -> int:
     0
     >>> and_gate(1, 1)
     1
+    >>> and_gate(2, 1)  # Added test case with invalid input
+    -1
     """
+    if input_1 not in (0, 1) or input_2 not in (0, 1):
+        return -1  # Sentinel value to indicate an error
     return int((input_1, input_2).count(0) == 0)
+
 
 
 def test_and_gate() -> None:
@@ -48,3 +52,4 @@ if __name__ == "__main__":
     print(and_gate(0, 0))
     print(and_gate(0, 1))
     print(and_gate(1, 1))
+    print(and_gate(2, 1))
